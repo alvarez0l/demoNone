@@ -1,0 +1,32 @@
+body {
+    background-color: antiquewhite;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+}
+    .menu li {
+        padding: 0 10px;
+        list-style: none;
+    }
+    .menu a {
+        text-decoration: none;
+        color: black;
+    }
+    .menu a:hover {
+        color: rgb(41, 41, 41);
+    }
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
