@@ -1,4 +1,13 @@
 <?php
-    mysqli_connect("MySQL-8.2", "root", "", "bd_shop")
-        or die("<p>Ошибка подключения к базе данных: ".mysqli_connect_error()."</p>");
-    echo "<p>Вы подключились в MySQL!</p>";
+
+//Данные для подключения
+$host = "MySQL-8.2";
+$username = "root";
+$password = "";
+$database = "bd_shop";
+
+$connectDB = new mysqli($host, $username, $password, $database);  //Новое подключение к БД
+
+if(!$connectDB) {  //Обработка ошибки подключения к БД
+    die("Ошибка подключения: " . $connectDB->connect_error);
+}

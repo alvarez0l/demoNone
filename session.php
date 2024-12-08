@@ -16,21 +16,21 @@ function pdo(): PDO {
     return $pdo;  //Выводим результат
 };
 
-//Далее создаем новую функцию для вывода сообщений об ошибках на страницу
-function flash(?string $message = null) {
-    if ($message) {
-        $_SESSION['flash'] = $message;
-    } else {
+//Далее создаем новую функцию для вывода всплывающих сообщений об ошибках на страницу
+function flash(?string $message = null) {  //Создаем функцию и указываем, что строка message по умолчанию NULL
+    if ($message) {  //Если передано значение Message
+        $_SESSION['flash'] = $message;  //И если не равно NULL, то оно сохраняется в глобальном массиве сессии с ключом Flash
+    } else {  //Если не передано, идет проверка есть ли в сессии сообщение Flash, если существует, то выводится следующий блок
         if (!empty($_SESSION['flash'])) { ?>
             <div class="alert alert-danger">
                 <?=$_SESSION['flash']?>
             </div>
         <?php }
-        unset($_SESSION['flash']);
+        unset($_SESSION['flash']);  //Затем flash удаляется из сессии, чтобы сообщение отображалось только один раз
     }
 };
 
-//Функция проверки авторизации
+//Эта функция проверяет, авторизован ли пользователь в текущей сессии, и возвращает результат в виде true или false
 function check_auth() {
-    return !!($_SESSION['user_id'] ?? false);
+    return !!($_SESSION['user_id'] ?? false);  //Используя глобальный массив сессии, проверяется, существует ли user_id в массиве
 }
