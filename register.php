@@ -20,7 +20,7 @@ if (strlen($_POST['password']) < 4) {  //Проверка на количест�
     die;
 };
 
-$stmt = pdo()->prepare("INSERT INTO `users` (`username`, `password`, `firstName`, `lastName`, `surName`, `phone`, `email`, `type`) VALUES (:username, :password, :fName, :lName, :sName, :phone, :email, :type)"); //Создаем переменную, обращаемся к PDO, кт. готовит SQL-запрос в БД
+$stmt = pdo()->prepare("INSERT INTO `users` (`username`, `password`, `firstName`, `lastName`, `surName`, `phone`, `email`) VALUES (:username, :password, :fName, :lName, :sName, :phone, :email)"); //Создаем переменную, обращаемся к PDO, кт. готовит SQL-запрос в БД
 $stmt->execute([ //Выполняет подготовленный запрос, передавая значения для подстановки в массив
     'username' => $_POST['username'],  //Имя
     'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),  //Захешированный пароль при помощи функции password_hash
@@ -29,7 +29,6 @@ $stmt->execute([ //Выполняет подготовленный запрос,
     'sName' => $_POST['sName'],  //Отчество
     'phone' => $_POST['phone'],  //Телефон
     'email' => $_POST['email'],  //Почта
-    'type' => $_POST['type'],  //Тип учетки
 ]);
 
 header('Location: log_form.php');  //Перевод на страницу Логина

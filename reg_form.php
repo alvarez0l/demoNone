@@ -27,7 +27,7 @@
                         }
                         if ($user) { 
                             if ($user['type'] == 'Admin') { ?>
-                                <li><a href="/admin_panel">Admin's Panel</a></li>
+                                <li><a href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
                             <form class="mt-5" method="post" action="logout.php">
                                     <button type="submit" class="btn" id="logout-btn">Выйти</button>
@@ -48,7 +48,6 @@
                     <input type="text" placeholder="Логин" name="username">
                     <input type="password" placeholder="Пароль" name="password">
                     <input type="password" placeholder="Повторите пароль" name="rePass">
-                    <input type="text" placeholder="Учетка" name="type">
                     <button type="submit">Зарегистрироваться</button>
                 </form>
             </div>

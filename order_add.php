@@ -36,13 +36,29 @@
                 </ul>
             </nav>
         </div>
-        <div class="content">
-            <h2>Ваши заказы</h2>
-            <p class="content_p">
-                <span>Ваши заказы</span>
-                <span></span>
-            </p>
+        <div class="wrap-content">
+            <?php
+                require_once __DIR__.'/session.php';
+                $user = null;
+                if (check_auth()) {
+                    // Получим данные пользователя по сохранённому идентификатору
+                    $stmt = pdo()->prepare("SELECT * FROM `users` WHERE `id` = :id");
+                    $stmt->execute(['id' => $_SESSION['user_id']]);
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                }
+
+                require_once 'connect.php';
+
+                $product_id = $_POST['product_id'];
+                $user_id = $user['id'];
+                $date = date("Y-m-d");
+
+                mysqli_query($connectDB, "INSERT INTO `orders` (`id`, `product_id`, `user_id`, `date`)
+                VALUES (NULL, '$product_id', '$user_id', '$date')");
+                echo "Готово! Ваш заказ успешно принят!";
+            ?>
         </div>
     </div>
 </body>
 </html>
+
