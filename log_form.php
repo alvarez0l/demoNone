@@ -40,9 +40,10 @@
             <h2>Авторизация</h2>
             <div class="form">
                 <form action="login.php" method="POST">
-                    <input type="text" placeholder="Логин" name="username">
-                    <input type="password" placeholder="Пароль" name="password">
-                    <button type="submit">Авторизоваться</button>
+                    <input class="input" type="text" placeholder="Логин" name="username">
+                    <input class="input" type="password" placeholder="Пароль" name="password">
+                    <?php require_once __DIR__.'/session.php'; flash() ?>
+                    <button class="btn btn-sub" type="submit">Авторизоваться</button>
                 </form>
             </div>
         </div>

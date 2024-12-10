@@ -40,15 +40,16 @@
             <h2>Регистрация</h2>
             <div class="form">
                 <form action="register.php" method="POST">
-                    <input type="text" placeholder="Фамилия" name="lName">
-                    <input type="text" placeholder="Имя" name="fName">
-                    <input type="text" placeholder="Отчество" name="sName">
-                    <input type="text" placeholder="Номер телефона" name="phone">
-                    <input type="text" placeholder="E-mail" name="email">
-                    <input type="text" placeholder="Логин" name="username">
-                    <input type="password" placeholder="Пароль" name="password">
-                    <input type="password" placeholder="Повторите пароль" name="rePass">
-                    <button type="submit">Зарегистрироваться</button>
+                    <input class="input" type="text" placeholder="Фамилия" name="lName">
+                    <input class="input" type="text" placeholder="Имя" name="fName">
+                    <input class="input" type="text" placeholder="Отчество" name="sName">
+                    <input class="input" type="text" placeholder="Номер телефона" name="phone">
+                    <input class="input" type="text" placeholder="E-mail" name="email">
+                    <input class="input" type="text" placeholder="Логин" name="username">
+                    <input class="input" type="password" placeholder="Пароль" name="password">
+                    <input class="input" type="password" placeholder="Повторите пароль" name="rePass">
+                    <?php require_once __DIR__.'/session.php'; flash() ?>
+                    <button class="btn btn-sub" type="submit">Зарегистрироваться</button>
                 </form>
             </div>
         </div>

@@ -41,6 +41,16 @@
             <p class="content_p">
                 <span>Добро пожаловать в интернет-магазин "Авоська"!</span>
             </p>
+            <div class="catalog">
+                <div class="catalog-card">
+                    <div class="catalog-head">
+                        
+                    </div>
+                    <div class="catalog-content">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

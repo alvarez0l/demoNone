@@ -22,7 +22,7 @@ if (password_verify($_POST['password'], $user['password'])) {  //Сверяем 
         ]);
     }
     $_SESSION['user_id'] = $user['id'];  //Сохраняем пользователя в Сессии
-    header('Location: /demo1/index.php');  //Переводим на главную страницу
+    header('Location: index.php');  //Переводим на главную страницу
     die;
 }
 //Вывод ошибки, если что то пошло не так
