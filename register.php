@@ -41,6 +41,11 @@ if (!preg_match($regexp, $_POST['phone'])) {   //Валидация номера
     header('Location: reg_form.php');
     die;
 };
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    flash('Такой почты не существует.');
+    header('Location: reg_form.php');
+    die;
+}
 
 
 $stmt = pdo()->prepare("INSERT INTO `users` (`username`, `password`, `firstName`, `lastName`, `surName`, `phone`, `email`) VALUES (:username, :password, :fName, :lName, :sName, :phone, :email)"); //Создаем переменную, обращаемся к PDO, кт. готовит SQL-запрос в БД
