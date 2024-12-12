@@ -42,14 +42,27 @@
                 <span>Добро пожаловать в интернет-магазин "Авоська"!</span>
             </p>
             <div class="catalog">
-                <div class="catalog-card">
-                    <div class="catalog-head">
-                        
-                    </div>
-                    <div class="catalog-content">
+                <?php
+                    require_once 'connect.php';
 
+                    $products = mysqli_query($connectDB, "SELECT * FROM `goods`");
+                    $products = mysqli_fetch_all($products);
+                    foreach($products as $obj) {
+                ?>
+                    <div class="catalog-card">
+                        <div class="catalog-head">
+                            <img class="img-prod" src="<?= $obj[4] ?>" alt="product_photo">
+                            <span><?= $obj[1] ?></span>
+                        </div>
+                        <div class="catalog-content">
+                            <span>Количество: <?= $obj[2] ?> шт.</span>
+                            <span>Цена: <?= $obj[3] ?> руб.</span>
+                            <span>Код товара: <?= $obj[0] ?></span>
+                        </div>
                     </div>
-                </div>
+                <?php
+                    }
+                ?>
             </div>
         </div>
     </div>
