@@ -13,7 +13,6 @@
                 <ul class="menu">
                     <li><a href="index.php">Главная</a></li>
                     <li><a href="catalog.php">Каталог</a></li>
-                    <li><a href="orders.php">Заказы</a></li>
                     <?php
                         require_once __DIR__.'/session.php';
                         $user = null;
@@ -25,7 +24,9 @@
                         <li><a href="reg_form.php">Регистрация</a></li>
                     <?php 
                         }
-                        if ($user) { 
+                        if ($user) {
+                            ?><li><a href="orders.php">Заказы</a></li>
+                            <li><a href="cart.php">Корзина</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
                                 <li><a href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>

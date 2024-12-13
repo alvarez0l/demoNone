@@ -13,7 +13,6 @@
                 <ul class="menu">
                     <li><a href="index.php">Главная</a></li>
                     <li><a href="catalog.php">Каталог</a></li>
-                    <li><a href="orders.php">Заказы</a></li>
                     <?php
                         require_once __DIR__.'/session.php';
                         $user = null;
@@ -26,6 +25,8 @@
                     <?php 
                         }
                         if ($user) { 
+                            ?><li><a href="orders.php">Заказы</a></li>
+                            <li><a href="cart.php">Корзина</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
                                 <li><a href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
@@ -43,9 +44,32 @@
                 <span>Здесь вы можете заказать бытовые товары со склада нашего магазина</span>
             </p>
             <div class="index-photo"></div>
-            <?php
-                require 'connect.php';
-            ?>
+            <div class="catalog">
+                <?php
+                    require_once 'connect.php';
+                    $i=0;
+                    $products = mysqli_query($connectDB, "SELECT * FROM `goods`");
+                    $products = mysqli_fetch_all($products);
+                    foreach($products as $obj) {
+                ?>
+                    <div class="catalog-card">
+                        <div class="catalog-head">
+                            <img class="img-prod" src="<?= $obj[4] ?>" alt="product_photo">
+                            <span><?= $obj[1] ?></span>
+                        </div>
+                        <div class="catalog-content">
+                            <span>Количество: <?= $obj[2] ?> шт.</span>
+                            <span>Цена: <?= $obj[3] ?> руб.</span>
+                            <span>Код товара: <?= $obj[0] ?></span>
+                            <button type="submit" class="btn" id="cart-btn">В корзину</button>
+                        </div>
+                    </div>
+                <?php
+                        $i+=1;
+                        if ($i==4) break;
+                    }
+                ?>
+            </div>
         </div>
     </div>
 </body>

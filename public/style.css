@@ -147,3 +147,15 @@ body {
     display: flex;
     align-items: flex-end;
 }
+
+#cart-btn {
+    margin: 10px 0;
+    width: 100%;
+    background-color: rgb(169, 226, 152);
+}
+
+#cart-btn:hover {
+    color: white;
+    background-color: rgb(106, 151, 93);
+    cursor: pointer;
+}

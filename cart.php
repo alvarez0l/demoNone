@@ -38,7 +38,7 @@
             </nav>
         </div>
         <div class="wrap-content">
-            <h2>Панель Администратора</h2>
+            <h2>Корзина</h2>
                 <table>
                     <tr>
                         <th>Фамилия</th>
