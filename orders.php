@@ -43,6 +43,33 @@
                 <span>Ваши заказы</span>
                 <span></span>
             </p>
+            <table>
+                <tr>
+                    <th>Номер заказа</th>
+                    <th>Наименование товара</th>
+                    <th>Статус заказа</th>
+                    <th>Ключ пользователя</th>
+                    <th>Дата</th>
+                </tr>
+
+            <?php if ($user) { 
+                require_once 'connect.php';
+                $user_id = $user['id'];
+                @$sort = $_POST['sort'];
+                $ticket = mysqli_query($connectDB, "SELECT * FROM `orders` WHERE `userID` = $user_id");
+                $ticket = mysqli_fetch_all($ticket);
+                foreach($ticket as $obj)
+                { ?>
+                    <tr>
+                        <td><?= $obj[0] ?></td>
+                        <td><?= $obj[5] ?></td>
+                        <td><?= $obj[10] ?></td>
+                        <td><?= $obj[7] ?></td>
+                        <td><?= $obj[9] ?></td>
+                    </tr>
+                <?php } ?>
+            <?php } ?>
+            </table>
         </div>
     </div>
 </body>
