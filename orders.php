@@ -25,8 +25,7 @@
                     <?php 
                         }
                         if ($user) {
-                            ?><li><a href="orders.php">Заказы</a></li>
-                            <li><a href="cart.php">Корзина</a></li><?php
+                            ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
                                 <li><a href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
@@ -37,6 +36,11 @@
                 </ul>
             </nav>
         </div>
+        <?php 
+            if ($user == null) { 
+                header('Location: log_form.php');
+            }
+        ?>
         <div class="content">
             <h2>Ваши заказы</h2>
             <p class="content_p">
@@ -52,7 +56,7 @@
                     <th>Дата</th>
                 </tr>
 
-            <?php if ($user) { 
+            <?php if ($user) {
                 require_once 'connect.php';
                 $user_id = $user['id'];
                 @$sort = $_POST['sort'];
@@ -70,6 +74,9 @@
                 <?php } ?>
             <?php } ?>
             </table>
+            <form class="mt-5" method="post" action="catalog.php">
+                <button type="submit" class="btn" id="newOrder-btn">Оформить новый заказ</button>
+            </form>
         </div>
     </div>
 </body>

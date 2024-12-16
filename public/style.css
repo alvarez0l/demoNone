@@ -159,3 +159,7 @@ body {
     background-color: rgb(106, 151, 93);
     cursor: pointer;
 }
+
+.form {
+    width: 100%;
+}

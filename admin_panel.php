@@ -25,8 +25,7 @@
                     <?php 
                         }
                         if ($user) { 
-                            ?><li><a href="orders.php">Заказы</a></li>
-                            <li><a href="cart.php">Корзина</a></li><?php
+                            ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
                                 <li><a href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
@@ -37,6 +36,15 @@
                 </ul>
             </nav>
         </div>
+        <?php 
+            if ($user) { 
+                if ($user['type'] != 'Admin') {
+                    header('Location: index.php');
+                }
+            } else {
+                header('Location: index.php');
+            }
+        ?>
         <div class="wrap-content">
             <h2>Панель Администратора</h2>
                 <table>

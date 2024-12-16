@@ -25,8 +25,7 @@
                     <?php 
                         }
                         if ($user) { 
-                            ?><li><a href="orders.php">Заказы</a></li>
-                            <li><a href="cart.php">Корзина</a></li><?php
+                            ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
                                 <li><a href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
@@ -61,7 +60,10 @@
                             <span>Количество: <?= $obj[2] ?> шт.</span>
                             <span>Цена: <?= $obj[3] ?> руб.</span>
                             <span>Код товара: <?= $obj[0] ?></span>
-                            <button type="submit" class="btn" id="cart-btn">В корзину</button>
+                            <form class="form" method="POST" action="orderAdd_form.php">
+                                <input type="text" value="<?= $obj[1] ?>" name="orderName" hidden>
+                                <button type="submit" class="btn" id="cart-btn">В корзину</button>
+                            </form>
                         </div>
                     </div>
                 <?php

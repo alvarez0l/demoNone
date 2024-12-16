@@ -13,7 +13,6 @@
                 <ul class="menu">
                     <li><a href="index.php">Главная</a></li>
                     <li><a href="catalog.php">Каталог</a></li>
-                    <li><a href="orders.php">Заказы</a></li>
                     <?php
                         require_once __DIR__.'/session.php';
                         $user = null;
@@ -26,6 +25,7 @@
                     <?php 
                         }
                         if ($user) { 
+                            ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
                                 <li><a href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
@@ -36,27 +36,24 @@
                 </ul>
             </nav>
         </div>
-        <div class="wrap-content">
-            <?php
-                require_once __DIR__.'/session.php';
-                $user = null;
-                if (check_auth()) {
-                    // Получим данные пользователя по сохранённому идентификатору
-                    $stmt = pdo()->prepare("SELECT * FROM `users` WHERE `id` = :id");
-                    $stmt->execute(['id' => $_SESSION['user_id']]);
-                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                }
-
-                require_once 'connect.php';
-
-                $product_id = $_POST['product_id'];
-                $user_id = $user['id'];
-                $date = date("Y-m-d");
-
-                mysqli_query($connectDB, "INSERT INTO `orders` (`id`, `product_id`, `user_id`, `date`)
-                VALUES (NULL, '$product_id', '$user_id', '$date')");
-                echo "Готово! Ваш заказ успешно принят!";
-            ?>
+        <div class="content">
+            <h2>Страница формирования заказа</h2>
+            <p class="content_p">
+                <?php
+                    if ($user == null) { 
+                        header('Location: log_form.php');
+                    }
+                    $orderName = $_POST['orderName'];
+                ?>
+                <span>Укажите необходимые данные для заказа товара <?= $orderName  ?></span>
+            </p>
+            <form class="mt-5" method="POST" action="orderAdd.php">
+                <input class="input" type="text" placeholder="Количество" name="amount">
+                <input class="input" type="text" placeholder="Адрес доставки" name="address">
+                <input type="text" value="<?= $orderName  ?>" name="orderName" hidden>
+                <?php require_once __DIR__.'/session.php'; flash() ?>
+                <button type="submit" class="btn">Оформить заказ</button>
+            </form>
         </div>
     </div>
 </body>
