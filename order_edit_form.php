@@ -36,47 +36,30 @@
                 </ul>
             </nav>
         </div>
-        <?php 
-            if ($user == null) { 
-                header('Location: log_form.php');
-            }
-        ?>
         <div class="content">
-            <h2>Ваши заказы</h2>
-            <p class="content_p">
-                <span>Ваши заказы</span>
-            </p>
-            <table>
-                <tr>
-                    <th>Номер заказа</th>
-                    <th>Наименование товара</th>
-                    <th>Статус заказа</th>
-                    <th>Ключ пользователя</th>
-                    <th>Дата</th>
-                </tr>
-
-            <?php if ($user) {
-                require_once 'connect.php';
-                $user_id = $user['id'];
-                @$sort = $_POST['sort'];
-                $ticket = mysqli_query($connectDB, "SELECT * FROM `orders` WHERE `userID` = $user_id");
-                $ticket = mysqli_fetch_all($ticket);
-                foreach($ticket as $obj)
-                { ?>
-                    <tr>
-                        <td><?= $obj[0] ?></td>
-                        <td><?= $obj[5] ?></td>
-                        <td><?= $obj[10] ?></td>
-                        <td><?= $obj[7] ?></td>
-                        <td><?= $obj[9] ?></td>
-                    </tr>
-                <?php } ?>
-            <?php } ?>
-            </table>
-            <form class="mt-5" method="post" action="catalog.php">
-                <button type="submit" class="btn" id="newOrder-btn">Оформить новый заказ</button>
+            <?php
+                $order_id = $_POST["id"];
+                $order_status = $_POST["order_status"];
+            ?>
+            <form method="POST" action="orderEdit.php">
+                <div class="edit-form">
+                    <input type='hidden' name='id' value='<?= $order_id ?>' />
+                    <label for="status">Изменить "<?php echo $order_status ?>" на</label>
+                    <select name="status" id="status" class="inp">
+                        <option value="Ждёт подтверждения">Ждёт подтверждения</option>
+                        <option value="Одобрен">Одобрен</option>
+                        <option value="Отклонен">Отклонен</option>
+                    </select>
+                    <label for="status">?</label>
+                <button type="submit" class="btn btn-primary">Подтвердить</button>
+                </div>
             </form>
+        </div>
         </div>
     </div>
 </body>
+<footer>
+    <span>+7 978 900 90 90 - Телефон для заявок</span>
+    <span>Все права защищены</span>
+</footer>
 </html>

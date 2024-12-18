@@ -45,8 +45,9 @@
                 header('Location: index.php');
             }
         ?>
-        <div class="wrap-content">
+        <div class="content">
             <h2>Панель Администратора</h2>
+            <span>Администрирование заказов возможно только с пометкой "Новое"</span>
                 <table>
                     <tr>
                         <th>Фамилия</th>
@@ -76,19 +77,21 @@
                         <td><?= $obj[5] ?></td>
                         <td><?= $obj[6] ?></td>
                         <td><?= $obj[10] ?></td>
-                        <td id="redac">
-                            <form action='order_edit.php' method='POST'>
-                                <input type='hidden' name='id' value='<?= $obj[0] ?>' />
-                                <input type='hidden' name='order_status' value='<?= $obj[10] ?>' />
-                                <input id="edit-btn" type='submit' value='Изменить'>
-                            </form>
-                        </td>
-                        <td id="del-btn">
-                            <form action='order_delete.php' method='POST'>
-                                <input type='hidden' name='id' value='<?= $obj[0] ?>' />
-                                <input id="delete-btn" type='submit' value='Удалить'>
-                            </form>
-                        </td>
+                        <?php if ($obj[10] == "Новое") { ?>
+                            <td id="redac">
+                                <form action='order_edit_form.php' method='POST'>
+                                    <input type='hidden' name='id' value='<?= $obj[0] ?>' />
+                                    <input type='hidden' name='order_status' value='<?= $obj[10] ?>' />
+                                    <input id="edit-btn" type='submit' value='Изменить'>
+                                </form>
+                            </td>
+                            <td id="del-btn">
+                                <form action='orderDelete.php' method='POST'>
+                                    <input type='hidden' name='id' value='<?= $obj[0] ?>' />
+                                    <input id="delete-btn" type='submit' value='Удалить'>
+                                </form>
+                            </td>
+                        <?php } ?>
                         </tr>
                         <?php } ?>
                 <?php } ?>
