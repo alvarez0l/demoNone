@@ -27,7 +27,7 @@
                         if ($user) { 
                             ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
-                                <li><a href="admin_panel.php">Admin's Panel</a></li>
+                                <li><a id="a-admin" href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
                             <form class="mt-5" method="post" action="logout.php">
                                     <button type="submit" class="btn" id="logout-btn">Выйти</button>
@@ -57,5 +57,11 @@
         </div>
     </div>
 </body>
+<footer>
+    <div class="footer">
+        <span>Нужна помощь? +7 (978)-900-90-90 - Звонок бесплатный</span>
+        <span>Проект интернет-магазин "Авоська". Все права защищены.</span>
+    </div>
+</footer>
 </html>
 

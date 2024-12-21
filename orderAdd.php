@@ -27,7 +27,7 @@
                         if ($user) {
                             ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
-                                <li><a href="admin_panel.php">Admin's Panel</a></li>
+                                <li><a id="a-admin" href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
                             <form class="mt-5" method="post" action="logout.php">
                                     <button type="submit" class="btn" id="logout-btn">Выйти</button>
@@ -40,14 +40,8 @@
             if ($user == null) { 
                 header('Location: log_form.php');
             }
-            if ($_POST['address'] == null) {  //Валидация повтора пароля
-                flash('Пароли не совпадают. Повторите попытку');
-                header('Location: orderAdd_form.php');
-                die;
-            };
-            if ($_POST['amount'] == null) {  //Валидация повтора пароля
-                flash('Пароли не совпадают. Повторите попытку');
-                header('Location: orderAdd_form.php');
+            if (($_POST['address'] == null) || ($_POST['amount'] == null)) {  //Валидация данных на странице формирования заказа
+                header('Location: catalog.php');
                 die;
             };
 
@@ -74,7 +68,7 @@
 
             mysqli_query($connectDB, "INSERT INTO `orders` (`id`, `lastName`, `firstName`, `sureName`, `email`, `orderName`, `amount`, `userID`, `address`, `date`)
             VALUES (NULL, '$user_LN', '$user_FN', '$user_SN', '$user_email', '$orderName', '$amount', '$user_id', '$address', '$date')");
-            echo "Готово! Ваш заказ успешно принят!";
+            echo "Готово! Ваш заказ успешно принят и находится на странице Заказы!";
             // sleep(2);
             // header('Location: catalog.php');
         ?>

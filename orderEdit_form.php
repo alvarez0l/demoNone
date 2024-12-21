@@ -27,7 +27,7 @@
                         if ($user) {
                             ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
-                                <li><a href="admin_panel.php">Admin's Panel</a></li>
+                                <li><a id="a-admin" href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
                             <form class="mt-5" method="post" action="logout.php">
                                     <button type="submit" class="btn" id="logout-btn">Выйти</button>
@@ -49,17 +49,15 @@
                         <option value="Ждёт подтверждения">Ждёт подтверждения</option>
                         <option value="Одобрен">Одобрен</option>
                         <option value="Отклонен">Отклонен</option>
+                        <option value="Выполнен">Выполнен</option>
                     </select>
                     <label for="status">?</label>
-                <button type="submit" class="btn btn-primary">Подтвердить</button>
+                <?php require_once __DIR__.'/session.php'; flash() ?>
+                <button type="submit" class="btn">Подтвердить</button>
                 </div>
             </form>
         </div>
         </div>
     </div>
 </body>
-<footer>
-    <span>+7 978 900 90 90 - Телефон для заявок</span>
-    <span>Все права защищены</span>
-</footer>
 </html>

@@ -7,7 +7,7 @@ function pdo(): PDO {
     static $pdo; //Объявляем статическую переменную, дабы она сохраняла свое значение после завершения функции
 
     if (!$pdo) {  //Если нет PDO
-        $config = include __DIR__.'/config.php';  //Используется для подключения и выполнения указанного файла
+        $config = include __DIR__.'../config.php';  //Используется для подключения и выполнения указанного файла
 
         $dsn = 'mysql:dbname='.$config['db_name'].';host='.$config['db_host'];  //DSN - для подключения к БД
         $pdo = new PDO($dsn, $config['db_user'], $config['db_pass']);  //Создаем объект PDO, обеспечивает безопасное и удобное взаимодействие с БД

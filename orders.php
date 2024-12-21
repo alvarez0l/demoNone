@@ -27,7 +27,7 @@
                         if ($user) {
                             ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
-                                <li><a href="admin_panel.php">Admin's Panel</a></li>
+                                <li><a id="a-admin" href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
                             <form class="mt-5" method="post" action="logout.php">
                                     <button type="submit" class="btn" id="logout-btn">Выйти</button>
@@ -44,7 +44,7 @@
         <div class="content">
             <h2>Ваши заказы</h2>
             <p class="content_p">
-                <span>Ваши заказы</span>
+                <span>Ниже будут видны все ваши заказы</span>
             </p>
             <table>
                 <tr>

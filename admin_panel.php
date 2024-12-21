@@ -27,7 +27,7 @@
                         if ($user) { 
                             ?><li><a href="orders.php">Заказы</a></li><?php
                             if ($user['type'] == 'Admin') { ?>
-                                <li><a href="admin_panel.php">Admin's Panel</a></li>
+                                <li><a id="a-admin" href="admin_panel.php">Admin's Panel</a></li>
                             <?php } ?>
                             <form method="post" action="logout.php">
                                     <button type="submit" class="btn" id="logout-btn">Выйти</button>
@@ -79,7 +79,7 @@
                         <td><?= $obj[10] ?></td>
                         <?php if ($obj[10] == "Новое") { ?>
                             <td id="redac">
-                                <form action='order_edit_form.php' method='POST'>
+                                <form action='orderEdit_form.php' method='POST'>
                                     <input type='hidden' name='id' value='<?= $obj[0] ?>' />
                                     <input type='hidden' name='order_status' value='<?= $obj[10] ?>' />
                                     <input id="edit-btn" type='submit' value='Изменить'>
