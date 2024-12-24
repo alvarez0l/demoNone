@@ -1,6 +1,8 @@
 body {
-    background-color: rgb(253, 225, 189);
+    background-color: rgb(252, 239, 197);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .wrapper {
@@ -21,6 +23,16 @@ body {
 
 .alert-danger {
     color: red;
+}
+
+.header {
+    width: 100%;
+    background-color: rgb(231, 221, 188);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .menu {
@@ -116,7 +128,7 @@ body {
 .index-photo {
     width: 900px;
     height: 500px;
-    background-image: url('https://promstellage.ru/images/blog/vidy-skladov-01.jpg');
+    background-image: url(/demo1/public/img/index_photo.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
